@@ -49,3 +49,47 @@ document
 
     fileInput.click();
   });
+
+document.getElementById("add-skill").addEventListener("click", function () {
+  const skillElement = document.querySelector("select[name='skills']");
+  const skillList = document.getElementById("skill-list");
+
+  if (!skillElement.value) {
+    return;
+  }
+
+  const skill = document.createElement("li");
+  skill.innerText = SKILLS[skillElement.value];
+  skill.className = "w-full inline-flex justify-between items-center";
+
+  const removeButton = document.createElement("button");
+  const removeButtonIcon = document.createElement("i");
+
+  removeButtonIcon.className = "fa-solid fa-trash";
+  removeButton.appendChild(removeButtonIcon);
+  removeButton.addEventListener("click", function () {
+    skill.remove();
+  });
+
+  const skillInput = document.createElement("input");
+  skillInput.type = "number";
+  skillInput.name = `skill_[${skillElement.value}]`;
+  skillInput.id = `skill_${skillElement.value}`;
+  skillInput.placeholder = "Poziom umiejętności";
+  skillInput.min = 0;
+  skillInput.value = 1;
+  skillInput.className =
+    "bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400";
+  skillInput.required = true;
+  skillInput.setAttribute("data-themable", "true");
+  skillInput.addEventListener("change", function () {
+    if (this.value <= 0) {
+      this.parentElement.remove();
+    }
+  });
+
+  skill.appendChild(skillInput);
+  skill.appendChild(removeButton);
+
+  skillList.appendChild(skill);
+});

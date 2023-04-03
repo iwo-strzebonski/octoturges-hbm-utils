@@ -9,9 +9,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   <script src="https://kit.fontawesome.com/8db9837635.js" crossorigin="anonymous"></script>
+  <script defer src="scripts/consts.js"></script>
+  <script defer src="scripts/helpers.js"></script>
   <script defer src="scripts/inputs.js"></script>
   <script defer src="scripts/selects.js"></script>
   <script defer src="scripts/buttons.js"></script>
+  <script defer src="scripts/index.js"></script>
 </head>
 
 <body class="w-full h-full p-12">
@@ -37,11 +40,6 @@
                 <label for="race" class="mr-2">Rasa:</label>
                 <select data-themable required name="race" id="race" title="Rasa" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
                   <option disabled selected value> -- Wybierz -- </option>
-                  <option value="human">Człowiek</option>
-                  <option value="elf">Elf</option>
-                  <option value="feles">Feles</option>
-                  <option value="naga">Lamia</option>
-                  <option value="angel">Anioł</option>
                 </select>
               </li>
               <li>
@@ -52,23 +50,6 @@
                 <label for="magic-type" class="mr-2">Dziedzina Magii:</label>
                 <select data-themable required name="magic-type" id="magic-type" title="Dziedzina Magii" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
                   <option disabled selected value> -- Wybierz -- </option>
-                  <optgroup label="Alchemia">
-                    <option value="transmutation">Transmutacja</option>
-                    <option value="potions">Warzenie Eliksirów</option>
-                  </optgroup>
-                  <option value="botanics">Botanika</option>
-                  <optgroup label="Magia Żywiołów">
-                    <option value="fire">Ogień</option>
-                    <option value="water">Woda</option>
-                    <option value="earth">Ziemia</option>
-                    <option value="air">Powietrze</option>
-                  </optgroup>
-                  <optgroup label="Magia Sakralna">
-                    <option value="sanctum">Magia Sakralna</option>
-                    <option value="exorcisms">Egzorcyzmy</option>
-                  </optgroup>
-                  <option value="artifice">Tworzenie Artefaktów</option>
-                  <option value="mana-source">Źródło Mocy</option>
                 </select>
               </li>
               <li>
@@ -155,7 +136,7 @@
               <li>
                 <label for="magic-level">Magia:</label>
 
-                <select data-themable required name="magic-level" id="magic-level" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                <select data-themable required name="magic-level" id="magic-level" title="Poziom Mocy" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
                   <option disabled selected value> -- Wybierz -- </option>
                   <option value="0">0</option>
                   <option value="1">I</option>
@@ -197,7 +178,8 @@
         <div id="accordion-open-body-4" class="hidden" aria-labelledby="accordion-open-heading-4">
           <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
             <ul class="flex flex-col gap-4">
-              
+              <li>
+              </li>
             </ul>
           </div>
         </div>
@@ -215,7 +197,17 @@
         <div id="accordion-open-body-5" class="hidden" aria-labelledby="accordion-open-heading-5">
           <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
             <ul class="flex flex-col gap-4">
-              
+              <li class="w-full inline-flex justify-between gap-2">
+                <select data-themable required name="skills" id="skills" title="Umiejętności" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option disabled selected value> -- Wybierz -- </option>
+                </select>
+                <button data-themable type="button" id="add-skill" class="text-sm p-0 px-4 py-2 bg-slate-600/50 rounded-md">
+                  <i class="fa-solid fa-plus"></i> Dodaj umiejętność
+                </button>
+              </li>
+              <li>
+                <ul id="skill-list" class="flex flex-col gap-2"></ul>
+              </li>
             </ul>
           </div>
         </div>
