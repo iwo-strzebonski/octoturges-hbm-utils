@@ -158,3 +158,55 @@ document.getElementById("add-talent").addEventListener("click", function () {
 
   createTalent(talentElement.value);
 });
+
+document
+  .getElementById("buy-attribute-points")
+  .addEventListener("click", function () {
+    Swal.fire({
+      title: "UWAGA",
+      icon: "warning",
+      text: "Funkcja w trakcie tworzenia! Nie jest zgodna z zasadami gry!",
+    }).then(() => {
+      const totalAttributePoints = document.getElementById(
+        "total-attribute-points"
+      );
+      const remainingExp = document.getElementById("remaining-exp");
+      const totalExp = document.getElementById("total-exp");
+
+      Swal.fire({
+        title: "Kup Punkty Atrybutów (PA)",
+        text: "Ile punktów atrybutów chcesz kupić?",
+        input: "number",
+        inputPlaceholder: "Wpisz ilość punktów atrybutów...",
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "Musisz podać ilość punktów atrybutów!";
+          } else if (Number(value) * 5 > Number(remainingExp.value)) {
+            return "Nie masz wystarczającej ilości punktów doświadczenia!";
+          }
+        },
+      }).then((result) => {
+        if (!result.isConfirmed) {
+          return;
+        }
+
+        const points = Number(result.value);
+
+        totalAttributePoints.value =
+          Number(totalAttributePoints.value) + points;
+        totalExp.value = Number(totalExp.value) - points * 5;
+
+        totalAttributePoints.dispatchEvent(new Event("change"));
+        totalExp.dispatchEvent(new Event("change"));
+
+        Swal.fire({
+          title: "Sukces",
+          icon: "success",
+          text: "Punkty atrybutów zostały zakupione pomyślnie.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+    });
+  });
