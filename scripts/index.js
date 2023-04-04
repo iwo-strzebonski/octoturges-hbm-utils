@@ -46,3 +46,41 @@ for (const skill in SKILLS) {
 
   skillElement.appendChild(option);
 }
+
+for (const talent in TALENTS) {
+  const talentElement = document.querySelector("select[name='talents']");
+
+  if ("types" in TALENTS[talent]) {
+    const optgroup = document.createElement("optgroup");
+    optgroup.label = TALENTS[talent].name;
+
+    for (const type in TALENTS[talent].types) {
+      if ("subtypes" in TALENTS[talent].types[type]) {
+        for (const subtype in TALENTS[talent].types[type].subtypes) {
+          const option = document.createElement("option");
+
+          option.value = subtype;
+          option.innerText = `${TALENTS[talent].types[type].name} (${TALENTS[talent].types[type].subtypes[subtype]})`;
+
+          optgroup.appendChild(option);
+        }
+      } else {
+        const option = document.createElement("option");
+
+        option.value = type;
+        option.innerText = TALENTS[talent].types[type].name;
+
+        optgroup.appendChild(option);
+      }
+    }
+
+    talentElement.appendChild(optgroup);
+  } else {
+    const option = document.createElement("option");
+
+    option.innerText = TALENTS[talent].name;
+    option.value = talent;
+
+    talentElement.appendChild(option);
+  }
+}

@@ -64,8 +64,8 @@
                 </select>
               </li>
               <li>
-                <label for="school" class="mr-2">Szkoła:</label>
-                <input data-themable type="text" name="school" id="school" required class="w-full bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" placeholder="Szkoła" />
+                <label for="affiliation" class="mr-2">Przynależność:</label>
+                <input data-themable type="text" name="affiliation" id="affiliation" class="w-full bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" placeholder="Przynależność" />
               </li>
             </ul>
           </div>
@@ -88,21 +88,21 @@
                 <input type="hidden" name="race-exp" id="race-exp" value="0" />
                 <input type="hidden" name="year-exp" id="year-exp" value="0" />
                 <label for="total-exp" class="mr-2">Zdobyte PD:</label>
-                <input data-themable required type="number" id="total-exp" name="total-exp" min="0" placeholder="Zdobyte PD..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+                <input data-themable type="number" id="total-exp" name="total-exp" min="0" placeholder="Zdobyte PD..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
               </li>
               <li>
                 <label for="remaining-exp" class="mr-2">Pozostałe PD:</label>
-                <input data-themable required disabled type="number" id="remaining-exp" name="remaining-exp" value="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+                <input data-themable disabled required type="number" id="remaining-exp" name="remaining-exp" value="0" min="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
               </li>
               <li>
                 <input type="hidden" name="race-attribute-points" id="race-attribute-points" value="0" />
                 <input type="hidden" name="year-attribute-points" id="year-attribute-points" value="0" />
                 <label for="total-attribute-points" class="mr-2">Zdobyte PA:</label>
-                <input data-themable required type="number" id="total-attribute-points" name="total-attribute-points" min="0" placeholder="Zdobyte PA..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+                <input data-themable type="number" id="total-attribute-points" name="total-attribute-points" min="0" placeholder="Zdobyte PA..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
               </li>
               <li>
                 <label for="remaining-attribute-points" class="mr-2">Pozostałe PA:</label>
-                <input data-themable required disabled type="number" id="remaining-attribute-points" name="remaining-attribute-points" value="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+                <input data-themable disabled required type="number" id="remaining-attribute-points" name="remaining-attribute-points" value="0" min="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
               </li>
             </ul>
           </div>
@@ -156,11 +156,6 @@
 
                 <input data-themable required disabled type="number" name="magic-dice" id="magic-dice" value="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
               </li>
-              <li>
-                <label for="max-mana">Ilość Many:</label>
-
-                <input data-themable required disabled type="number" name="max-mana" id="max-mana" value="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
-              </li>
             </ul>
           </div>
         </div>
@@ -179,6 +174,33 @@
           <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
             <ul class="flex flex-col gap-4">
               <li>
+                <label for="max-hp">Punkty Życia:</label>
+                <input data-themable disabled required type="number" name="max-hp" id="max-hp" value="3" placeholder="Punkty Życia..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li>
+                <label for="max-mana">Punkty Many:</label>
+                <input data-themable disabled required type="number" name="max-mana" id="max-mana" placeholder="Punkty Many..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li>
+                <label for="armour">Pancerz:</label>
+                <input data-themable type="number" name="armour" id="armour" placeholder="Pancerz..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li>
+                <label for="initiative">Inicjatywa:</label>
+                <input data-themable disabled required type="number" name="initiative" id="initiative" value="1" placeholder="Inicjatywa..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li>
+                <label for="max-mettle">Zapał:</label>
+                <input data-themable disabled required type="number" name="max-mettle" id="max-mettle" value="1" placeholder="Zapał..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li>
+                <label for="speed">Szybkość:</label>
+                <select data-themable required name="speed" id="speed" title="Szybkość" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option disabled selected value> -- Wybierz -- </option>
+                  <option value="1">Szybki</option>
+                  <option value="2">Normalny</option>
+                  <option value="3">Powolny</option>
+                </select>
               </li>
             </ul>
           </div>
@@ -188,7 +210,7 @@
         <h2 id="accordion-open-heading-5">
           <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-b-0 border-slate-700 focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-5" aria-expanded="true" aria-controls="accordion-open-body-5">
             <span class="flex items-center">
-              <i class="fa-solid fa-book mr-2"></i> Umiejętności </span>
+              <i class="fa-solid fa-star mr-2"></i> Umiejętności </span>
             <span data-accordion-icon class="rotate-180 shrink-0">
               <i class="fa-solid fa-chevron-down"></i>
             </span>
@@ -196,17 +218,17 @@
         </h2>
         <div id="accordion-open-body-5" class="hidden" aria-labelledby="accordion-open-heading-5">
           <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
-            <ul class="flex flex-col gap-4">
+            <ul class="flex flex-col">
               <li class="w-full inline-flex justify-between gap-2">
-                <select data-themable required name="skills" id="skills" title="Umiejętności" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                <select data-themable name="skills" id="skills" title="Umiejętności" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
                   <option disabled selected value> -- Wybierz -- </option>
                 </select>
-                <button data-themable type="button" id="add-skill" class="text-sm p-0 px-4 py-2 bg-slate-600/50 rounded-md">
+                <button data-themable type="button" id="add-skill" class="text-sm p-0 px-4 py-2 bg-slate-600 rounded-md">
                   <i class="fa-solid fa-plus"></i> Dodaj umiejętność
                 </button>
               </li>
               <li>
-                <ul id="skill-list" class="flex flex-col gap-2"></ul>
+                <ul id="skill-list" class="flex flex-col gap-2 mt-2"></ul>
               </li>
             </ul>
           </div>
@@ -225,7 +247,17 @@
         <div id="accordion-open-body-6" class="hidden" aria-labelledby="accordion-open-heading-6">
           <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
             <ul class="flex flex-col gap-4">
-              
+              <li class="w-full inline-flex justify-between gap-2">
+                <select data-themable name="talents" id="talents" title="Talenty" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option disabled selected value> -- Wybierz -- </option>
+                </select>
+                <button data-themable type="button" id="add-talent" class="text-sm p-0 px-4 py-2 bg-slate-600 rounded-md">
+                  <i class="fa-solid fa-plus"></i> Dodaj talent
+                </button>
+              </li>
+              <li>
+                <ul id="talent-list" class="flex flex-col gap-2 mt-2"></ul>
+              </li>
             </ul>
           </div>
         </div>
