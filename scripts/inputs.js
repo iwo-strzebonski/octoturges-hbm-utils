@@ -161,8 +161,6 @@ document.getElementById("initiative").addEventListener("change", function () {
     for (const child of talentList.children) {
       const input = child.querySelector("input");
 
-      console.debug(input.name);
-
       if (input.name === "talent_[combat-ready]") {
         combatReadyLvl = parseInt(input.value || 0);
         break;

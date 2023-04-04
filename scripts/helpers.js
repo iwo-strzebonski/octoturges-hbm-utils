@@ -18,6 +18,8 @@ function getColor(color, className) {
 
 function createSkill(skillName, value = 1) {
   const skillList = document.getElementById("skill-list");
+  const raceSelector = document.querySelector("select[name='race']");
+  const remainingExp = document.getElementById("remaining-exp");
 
   for (const child of skillList.children) {
     const input = child.querySelector("input");
@@ -37,8 +39,10 @@ function createSkill(skillName, value = 1) {
     initiative.value = Number(initiative.value) + value;
   }
 
+  const span = document.createElement("span");
   const removeButton = document.createElement("button");
   const removeButtonIcon = document.createElement("i");
+  const skillInput = document.createElement("input");
 
   removeButtonIcon.className = "fa-solid fa-trash";
   removeButton.appendChild(removeButtonIcon);
@@ -65,7 +69,6 @@ function createSkill(skillName, value = 1) {
     skill.remove();
   });
 
-  const skillInput = document.createElement("input");
   skillInput.type = "number";
   skillInput.name = `skill_[${skillName}]`;
   skillInput.id = `skill_${skillName}`;
@@ -115,8 +118,6 @@ function createSkill(skillName, value = 1) {
     this.oldValue = this.value;
   });
 
-  const raceSelector = document.querySelector("select[name='race']");
-
   const expCost =
     1 -
     +(
@@ -125,12 +126,11 @@ function createSkill(skillName, value = 1) {
       0
     );
 
-  const remainingExp = document.getElementById("remaining-exp");
-
   remainingExp.value = Number(remainingExp.value) - expCost;
 
-  skill.appendChild(skillInput);
-  skill.appendChild(removeButton);
+  span.appendChild(skillInput);
+  span.appendChild(removeButton);
+  skill.appendChild(span);
 
   skillList.appendChild(skill);
 }
@@ -155,6 +155,7 @@ function getAllSkillsCost() {
 
 function createTalent(talentName, value = 1) {
   const talentList = document.getElementById("talent-list");
+  const remainingExp = document.getElementById("remaining-exp");
 
   for (const child of talentList.children) {
     const input = child.querySelector("input");
@@ -164,11 +165,14 @@ function createTalent(talentName, value = 1) {
     }
   }
 
-  console.debug("Creating talent", talentName, value);
+  const span = document.createElement("span");
+  const talent = document.createElement("li");
+  const removeButton = document.createElement("button");
+  const removeButtonIcon = document.createElement("i");
+  const talentInput = document.createElement("input");
 
   const [tname, subtname, gtname] = talentName.split("_");
 
-  const talent = document.createElement("li");
   talent.className = "w-full inline-flex justify-between items-center";
 
   if (gtname) {
@@ -187,9 +191,6 @@ function createTalent(talentName, value = 1) {
     initiative.value = Number(initiative.value) + value * 2;
   }
 
-  const removeButton = document.createElement("button");
-  const removeButtonIcon = document.createElement("i");
-
   removeButtonIcon.className = "fa-solid fa-trash";
   removeButton.appendChild(removeButtonIcon);
   removeButton.addEventListener("click", function () {
@@ -207,7 +208,6 @@ function createTalent(talentName, value = 1) {
     talent.remove();
   });
 
-  const talentInput = document.createElement("input");
   talentInput.type = "number";
   talentInput.name = `talent_[${talentName}]`;
   talentInput.id = `talent_${talentName}`;
@@ -243,13 +243,12 @@ function createTalent(talentName, value = 1) {
     this.oldValue = this.value;
   });
 
-  const remainingExp = document.getElementById("remaining-exp");
-
   remainingExp.value =
     Number(remainingExp.value) - Number(talentInput.value || 0) * 4;
 
-  talent.appendChild(talentInput);
-  talent.appendChild(removeButton);
+  span.appendChild(talentInput);
+  span.appendChild(removeButton);
+  talent.appendChild(span);
 
   talentList.appendChild(talent);
 }
