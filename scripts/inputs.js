@@ -132,7 +132,8 @@ document
       parseInt(totalAttributePoints.value || 0) -
       parseInt(body.value || 0) -
       parseInt(mind.value || 0) -
-      parseInt(soul.value || 0);
+      parseInt(soul.value || 0) +
+      3;
   });
 
 document.getElementById("max-hp").addEventListener("change", function () {

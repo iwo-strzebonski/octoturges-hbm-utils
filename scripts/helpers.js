@@ -164,8 +164,21 @@ function createTalent(talentName, value = 1) {
     }
   }
 
+  console.debug("Creating talent", talentName, value);
+
+  const [tname, subtname, gtname] = talentName.split("_");
+
   const talent = document.createElement("li");
-  talent.innerText = TALENTS[talentName].name;
+  talent.className = "w-full inline-flex justify-between items-center";
+
+  if (gtname) {
+    talent.innerText = `${TALENTS[tname].name} (${TALENTS[tname].types[subtname].subtypes[gtname]})`;
+  } else if (subtname) {
+    talent.innerText = `${TALENTS[tname].name} (${TALENTS[tname].types[subtname].name})`;
+  } else {
+    talent.innerText = TALENTS[talentName].name;
+  }
+
   talent.className = "w-full inline-flex justify-between items-center";
 
   if (talentName === "combat-ready") {
@@ -182,7 +195,8 @@ function createTalent(talentName, value = 1) {
   removeButton.addEventListener("click", function () {
     const remainingExp = document.getElementById("remaining-exp");
 
-    remainingExp.value = Number(remainingExp.value) + Number(talent.value || 0);
+    remainingExp.value =
+      Number(remainingExp.value) + Number(talentInput.value || 0) * 4;
 
     if (talentName === "combat-ready") {
       const initiative = document.getElementById("initiative");
@@ -212,8 +226,8 @@ function createTalent(talentName, value = 1) {
 
     remainingExp.value =
       Number(remainingExp.value) -
-      Number(this.value || 0) +
-      Number(this.oldValue || 0);
+      Number(this.value || 0) * 4 +
+      Number(this.oldValue || 0) * 4;
 
     if (Number(this.value) <= 0) {
       this.parentElement.remove();
@@ -232,7 +246,7 @@ function createTalent(talentName, value = 1) {
   const remainingExp = document.getElementById("remaining-exp");
 
   remainingExp.value =
-    Number(remainingExp.value) - Number(talentInput.value || 0);
+    Number(remainingExp.value) - Number(talentInput.value || 0) * 4;
 
   talent.appendChild(talentInput);
   talent.appendChild(removeButton);

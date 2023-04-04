@@ -36,9 +36,13 @@ document
           if (key.includes("skill_")) {
             const skillName = key.replace("skill_[", "").replace("]", "");
 
-            console.debug(skillName);
-
             createSkill(skillName, data[key]);
+            continue;
+          } else if (key.includes("talent_")) {
+            const talentName = key.replace("talent_[", "").replace("]", "");
+
+            createTalent(talentName, data[key]);
+
             continue;
           }
 
@@ -75,6 +79,12 @@ document.getElementById("add-talent").addEventListener("click", function () {
   if (!talentElement.value) {
     return;
   }
+
+  talentElement.querySelectorAll("option").forEach((option) => {
+    if (option.value === talentElement.value) {
+      console.debug(option.parentElement);
+    }
+  });
 
   createTalent(talentElement.value);
 });

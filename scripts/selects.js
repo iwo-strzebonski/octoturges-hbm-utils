@@ -54,6 +54,10 @@ document
         raceExp.value = 4;
         raceAttributePoints.value = 5;
         break;
+      default:
+        raceExp.value = 0;
+        raceAttributePoints.value = 0;
+        break;
     }
 
     raceExp.dispatchEvent(new Event("change"));
@@ -88,6 +92,10 @@ document
       case "fifth":
         yearExp.value = 16;
         yearAttributePoints.value = 4;
+        break;
+      default:
+        yearExp.value = 0;
+        yearAttributePoints.value = 0;
         break;
     }
 
@@ -147,6 +155,10 @@ document
       case "10":
         magicDice.value = 0;
         maxMana.value = 3 * multiplier;
+        break;
+      default:
+        magicDice.value = 0;
+        maxMana.value = 0;
         break;
     }
 

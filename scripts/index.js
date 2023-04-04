@@ -59,15 +59,15 @@ for (const talent in TALENTS) {
         for (const subtype in TALENTS[talent].types[type].subtypes) {
           const option = document.createElement("option");
 
-          option.value = subtype;
-          option.innerText = `${TALENTS[talent].types[type].name} (${TALENTS[talent].types[type].subtypes[subtype]})`;
+          option.value = `${talent}_${type}_${subtype}`;
+          option.innerText = TALENTS[talent].types[type].subtypes[subtype];
 
           optgroup.appendChild(option);
         }
       } else {
         const option = document.createElement("option");
 
-        option.value = type;
+        option.value = `${talent}_${type}`;
         option.innerText = TALENTS[talent].types[type].name;
 
         optgroup.appendChild(option);
