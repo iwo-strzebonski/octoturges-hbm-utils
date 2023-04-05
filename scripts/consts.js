@@ -222,6 +222,76 @@ const TALENTS = {
     description:
       "Masz Przewagę na wszystkie Przeciwstawne rzuty gdy starasz się rozwiązać konflikt, ocenić emocje i zamiary innych bądź określić, czy inni kłamią. Ponadto jesteś szanowany(a) i większość osób będzie się zwracała do Ciebie z szacunkiem, nawet jeśli za Tobą nie przepadają.",
   },
+  "unity-with-nature": {
+    name: "Jedność z Naturą",
+    requirements: "Dusza (3), Empatia (3), Przekonywanie (3)",
+    description:
+      "Jesteś bardzo blisko związany(a) z Naturą.\n\nPodwajasz liczbę kości wynikających z ilości Punktów Umiejętności w Umiejętnościach Skradanie się oraz Zdolności Magiczne, jeżeli jesteś w miejscu niezmienionym przez jakąkolwiek inteligentną rasę.",
+  },
+  backstab: {
+    name: "Cios w Plecy",
+    requirements: "Ciało (3), Skradanie się (3)",
+    description:
+      "Jeśli cel nie wie o Twojej obecności, to obrażenia, które zadajesz, są podwajane.\n\nTen Talent działa wyłącznie wtedy, gdy atakujesz metodami konwencjonalnymi.",
+  },
+  opportunist: {
+    name: "Oportunista",
+    requirements: "8 Punktów Initiatywy",
+    description:
+      "Twoja zdolność do reagowania na wydarzenia w trakcie walki jest zadziwiająca.\n\nRaz na rundę gdy przeciwnik odchodzi od Ciebie i masz możliwość zaatakowania go, możesz podjąć próbę ataku.",
+  },
+  "poison-resistance": {
+    name: "Odporność na Trucizny",
+    requirements: "Ciało (3), Wytrzymałość (3)",
+    description:
+      "Postać do pewnego stopnia uodporniła się na zatrucia.\n\nGdy postać musi wykonać test na Wytrzymałość aby uniknąć zatrucia, podwój ilość kości wynikającą z poziomu Umiejętności Wytrzymałość.",
+  },
+  daydreamer: {
+    name: "Sen na Jawie",
+    requirements: "Dusza (2), Determinacja (3) lub Rasa (Elf)",
+    description:
+      "Nie potrzebujesz snu.\n\nElfy w przeciwieństwie do innych ras nie śpią, ale nie wszystkie potrafią kontrolować swoje myśli w trakcie odpoczynku.",
+  },
+  prattler: {
+    name: "Gaduła",
+    requirements: "Dusza (2), Przekonywanie (2)",
+    description:
+      "Podwajasz liczbę kości wynikających z ilości Punktów Umiejętności w Umiejętności Przekonywanie jeżeli chcesz kogoś zagadać lub odwrócić czyjąś uwagę swoją gadaniną.",
+  },
+  "technological-aptitude": {
+    name: "Technologiczna Jest Wśród Nas",
+    requirements: "Rasa (Człowiek)",
+    description:
+      "Jak inne rasy na co dzień mają styczność z magią, tak ludzie posługują się znacznie bardziej zaawansowaną technologią niż inne rasy - telefony, komputery, samochody… Długo by tu wymieniać. Dla innych ras ludzka technologia jest niezrozumiała, ale ludzie potrafią się nią bez problemu posługiwać.\n\nPodstawowa obsługa ludzkich urządzeń nie sprawia Ci kłopotu, a dodatkowo jeżeli masz instrukcję do danego urządzenia w języku zrozumiałym dla ciebie, to bez problemu możesz skorzystać z technologii Obcej cywilizacji, której poziom technologiczny jest porównywalny bądź niższy do poziomu cywilizacji ziemskiej.",
+  },
+  hover: {
+    name: "Zawisanie w Powietrzu",
+    requirements: "Zdolność do latania (np. skrzydła lub zaklęcie Lot)",
+    description:
+      "Postać, która normalnie musi być w ciągłym ruchu gdy jest w powietrzu, dzięki magii może się zatrzymać i zawisnąć nad ziemią.\n\nJeżeli postać ma Zdolność do latania, to może zawisać w powietrzu bez konieczności ruchu. Jeżeli postać nie ma Zdolności do latania, to może zawisać w powietrzu tylko wtedy, gdy używa zaklęcia Lot.",
+  },
+  "evasive-actions": {
+    name: "Powietrzne Uniki",
+    requirements: "Zdolność do latania (np. skrzydła lub zaklęcie Lot)",
+    description:
+      "Gdy postać jest atakowana na dystans, to podwaja bonusowe kości z Umiejętności Refleks gdy unika ataku.",
+  },
+  "magic-aptitude": {
+    name: "Jedność z Magią",
+    description:
+      "Jesteś bardzo blisko związany(a) z Magią.\n\nPodczas tworzenia postaci po wykonaniu rzutu na Magię od wyniku na rzucie kością odejmij 1, a ponadto jeżeli wynik po odjęciu będzie mniejszy niż 7, wykonaj ponownie rzut.",
+  },
+  "magical-resistance": {
+    name: "Odporność na Magię",
+    description:
+      "Podczas tworzenia postaci po wykonaniu rzutu na Magię do wyniku na rzucie kością, jeżeli wynik jest mniejszy niż 10, dodaj 1. Postać raz na rundę może za darmo przerzucić wynik testu na przeciwstawianie się efektom zaklęć.",
+  },
+  flight: {
+    name: "Latanie",
+    requirements: "Naturalna zdolność do latania (np. skrzydła)",
+    description:
+      "Postać potrafi latać.\n\nJeżeli postać ma naturalną zdolność do latania, to może latać bez konieczności używania zaklęcia Lot.",
+  },
 };
 
 const RACIAL_SKILLS = {
@@ -258,14 +328,14 @@ const RACIAL_TALENTS = {
     "free-talent": 2,
   },
   elf: {
-    "sensitive-senses/hearing": 1,
+    "sensitive-senses_hearing": 1,
     "magic-aptitude": 1,
     "magic-sense": 1,
   },
   feles: {
     "unity-with-nature": 1,
-    "sensitive-senses/hearing": 1,
-    "sensitive-senses/sight": 1,
+    "sensitive-senses_hearing": 1,
+    "sensitive-senses_sight": 1,
   },
   naga: {
     oppurtunistic: 1,
