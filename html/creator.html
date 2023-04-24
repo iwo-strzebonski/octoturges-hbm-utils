@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kreator Postaci do HbM: RPG v3 by Octoturge</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/8db9837635.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="flex flex-col items-center w-full h-full mt-4">
+    <form id="character-creator" data-themable class="rounded-lg bg-gray-900">
+      <div data-themable class="rounded-lg bg-gray-800 border-b-2 border-gray-700/50 p-8">
+        <input data-themable type="text" name="name" id="name" required class="w-full border-none text-3xl font-bold text-white bg-transparent text-center" placeholder="Imię postaci" />
+      </div>
+      <div data-themable data-accordion="open" class="mx-8 mt-8 text-white">
+        <h2 id="accordion-open-heading-1">
+          <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-b-0 border-slate-700 rounded-t-md focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-1" aria-expanded="true" aria-controls="accordion-open-body-1">
+            <span class="flex items-center">
+              <i class="fa-solid fa-user mr-2"></i> Podstawowe informacje </span>
+            <span data-accordion-icon class="rotate-180 shrink-0">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+        </h2>
+        <div id="accordion-open-body-1" class="hidden" aria-labelledby="accordion-open-heading-1">
+          <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
+            <ul class="w-full flex flex-col gap-4">
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="race" class="mr-2">Rasa:</label>
+                <select data-themable required name="race" id="race" title="Rasa" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option selected value> -- Wybierz -- </option>
+                </select>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="age" class="mr-2">Wiek:</label>
+                <input data-themable required type="number" id="age" name="age" min="0" placeholder="Wiek postaci..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="magic-type" class="mr-2">Dziedzina Magii:</label>
+                <select data-themable required name="magic-type" id="magic-type" title="Dziedzina Magii" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option selected value> -- Wybierz -- </option>
+                </select>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="academic-year" class="mr-2">Rok Szkolny:</label>
+                <select data-themable required name="academic-year" id="academic-year" title="Rok Szkolny" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option selected value> -- Wybierz -- </option>
+                  <option value="first">I</option>
+                  <option value="second">II</option>
+                  <option value="third">III</option>
+                  <option value="fourth">IV</option>
+                  <option value="fifth">V</option>
+                </select>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="affiliation" class="mr-2">Przynależność:</label>
+                <input data-themable type="text" name="affiliation" id="affiliation" class="w-full bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" placeholder="Przynależność..." />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-themable data-accordion="open" class="mx-8 text-white">
+        <h2 id="accordion-open-heading-2">
+          <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-b-0 border-slate-700 focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-2" aria-expanded="true" aria-controls="accordion-open-body-2">
+            <span class="flex items-center">
+              <i class="fa-solid fa-book mr-2"></i> Doświadczenie </span>
+            <span data-accordion-icon class="rotate-180 shrink-0">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+        </h2>
+        <div id="accordion-open-body-2" class="hidden" aria-labelledby="accordion-open-heading-2">
+          <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
+            <ul class="w-full flex flex-col gap-4">
+              <li class="w-full inline-flex justify-between items-center">
+                <input type="hidden" name="race-exp" id="race-exp" value="0" />
+                <input type="hidden" name="year-exp" id="year-exp" value="0" />
+                <label for="total-exp" class="mr-2">Zdobyte PD:</label>
+                <input data-themable type="number" id="total-exp" name="total-exp" min="0" placeholder="Zdobyte PD..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="remaining-exp" class="mr-2">Pozostałe PD:</label>
+                <input data-themable disabled required type="number" id="remaining-exp" name="remaining-exp" value="0" min="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <input type="hidden" name="race-attribute-points" id="race-attribute-points" value="0" />
+                <input type="hidden" name="year-attribute-points" id="year-attribute-points" value="0" />
+                <label for="total-attribute-points" class="mr-2">Zdobyte PA:</label>
+                <span>
+                  <input data-themable type="number" id="total-attribute-points" name="total-attribute-points" min="0" placeholder="Zdobyte PA..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+                  <button data-themable id="buy-attribute-points" title="Kup punkty atrybutów" type="button" class="text-sm p-0 px-4 py-2 bg-slate-600 rounded-md">
+                    <i class="fa-solid fa-plus"></i> Kup
+                  </button>
+                </span>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="remaining-attribute-points" class="mr-2">Pozostałe PA:</label>
+                <input data-themable disabled required type="number" id="remaining-attribute-points" name="remaining-attribute-points" value="0" min="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-themable data-accordion="open" class="mx-8 text-white">
+        <h2 id="accordion-open-heading-3">
+          <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-b-0 border-slate-700 focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-3" aria-expanded="true" aria-controls="accordion-open-body-3">
+            <span class="flex items-center">
+              <i class="fa-solid fa-heart mr-2"></i> Atrybuty </span>
+            <span data-accordion-icon class="rotate-180 shrink-0">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+        </h2>
+        <div id="accordion-open-body-3" class="hidden" aria-labelledby="accordion-open-heading-3">
+          <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
+            <ul class="w-full flex flex-col gap-4">
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="body">Ciało:</label>
+                <input data-themable required type="number" name="body" id="body" min="1" value="1" placeholder="Ciało" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="mind">Umysł:</label>
+                <input data-themable required type="number" name="mind" id="mind" min="1" value="1" placeholder="Umysł" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="soul">Dusza:</label>
+                <input data-themable required type="number" name="soul" id="soul" min="1" value="1" placeholder="Dusza" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="magic-level">Magia:</label>
+
+                <select data-themable required name="magic-level" id="magic-level" title="Poziom Mocy" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option selected value> -- Wybierz -- </option>
+                  <option value="0">0</option>
+                  <option value="1">I</option>
+                  <option value="2">II</option>
+                  <option value="3">III</option>
+                  <option value="4">IV</option>
+                  <option value="5">V</option>
+                  <option value="6">VI</option>
+                  <option value="7">VII</option>
+                  <option value="8">VIII</option>
+                  <option value="9">IX</option>
+                  <option value="10">X</option>
+                </select>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="magic-dice">Kości magii:</label>
+
+                <input data-themable required disabled type="number" name="magic-dice" id="magic-dice" value="0" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-themable data-accordion="open" class="mx-8 text-white">
+        <h2 id="accordion-open-heading-4">
+          <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-b-0 border-slate-700 focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-4" aria-expanded="true" aria-controls="accordion-open-body-4">
+            <span class="flex items-center">
+              <i class="fa-solid fa-shield-halved mr-2"></i> Cechy </span>
+            <span data-accordion-icon class="rotate-180 shrink-0">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+        </h2>
+        <div id="accordion-open-body-4" class="hidden" aria-labelledby="accordion-open-heading-4">
+          <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
+            <ul class="w-full flex flex-col gap-4">
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="max-hp">Punkty Życia:</label>
+                <input data-themable disabled required type="number" name="max-hp" id="max-hp" value="3" placeholder="Punkty Życia..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="max-mana">Punkty Many:</label>
+                <input data-themable disabled required type="number" name="max-mana" id="max-mana" placeholder="Punkty Many..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="armour">Pancerz:</label>
+                <input data-themable type="number" name="armour" id="armour" placeholder="Pancerz..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="initiative">Inicjatywa:</label>
+                <input data-themable disabled required type="number" name="initiative" id="initiative" value="1" placeholder="Inicjatywa..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="max-mettle">Zapał:</label>
+                <input data-themable disabled required type="number" name="max-mettle" id="max-mettle" value="1" placeholder="Zapał..." class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400" />
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <label for="speed">Szybkość:</label>
+                <select data-themable required name="speed" id="speed" title="Szybkość" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option selected value> -- Wybierz -- </option>
+                  <option value="1">Szybki</option>
+                  <option value="2">Normalny</option>
+                  <option value="3">Powolny</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-themable data-accordion="open" class="mx-8 text-white">
+        <h2 id="accordion-open-heading-5">
+          <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-b-0 border-slate-700 focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-5" aria-expanded="true" aria-controls="accordion-open-body-5">
+            <span class="flex items-center">
+              <i class="fa-solid fa-star mr-2"></i> Umiejętności </span>
+            <span data-accordion-icon class="rotate-180 shrink-0">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+        </h2>
+        <div id="accordion-open-body-5" class="hidden" aria-labelledby="accordion-open-heading-5">
+          <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
+            <ul class="flex flex-col">
+              <li class="w-full inline-flex justify-between gap-2">
+                <select data-themable name="skills" id="skills" title="Umiejętności" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option disabled selected value> -- Wybierz -- </option>
+                </select>
+                <button data-themable type="button" id="add-skill" class="text-sm p-0 px-4 py-2 bg-slate-600 rounded-md">
+                  <i class="fa-solid fa-plus"></i> Dodaj umiejętność
+                </button>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <ul id="skill-list" class="w-full flex flex-col gap-2 mt-2"></ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-themable data-accordion="open" class="mx-8 mb-8 text-white">
+        <h2 id="accordion-open-heading-6">
+          <button data-themable type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-slate-300 border border-slate-700 focus:ring-gray-800 bg-slate-800" data-accordion-target="#accordion-open-body-6" aria-expanded="true" aria-controls="accordion-open-body-6">
+            <span class="flex items-center">
+              <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Talenty </span>
+            <span data-accordion-icon class="rotate-180 shrink-0">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </button>
+        </h2>
+        <div id="accordion-open-body-6" class="hidden" aria-labelledby="accordion-open-heading-6">
+          <div data-themable class="p-5 border border-b-0 border-slate-700 bg-slate-700 text-slate-300">
+            <ul class="w-full flex flex-col gap-4">
+              <li class="w-full inline-flex justify-between gap-2">
+                <select data-themable name="talents" id="talents" title="Talenty" class="bg-transparent text-sm p-0 pb-1 border-0 border-b border-slate-400">
+                  <option disabled selected value> -- Wybierz -- </option>
+                </select>
+                <button data-themable type="button" id="add-talent" class="text-sm p-0 px-4 py-2 bg-slate-600 rounded-md">
+                  <i class="fa-solid fa-plus"></i> Dodaj talent
+                </button>
+              </li>
+              <li class="w-full inline-flex justify-between items-center">
+                <ul id="talent-list" class="w-full flex flex-col gap-2 mt-2"></ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="my-4 inline-flex justify-center gap-16 w-full">
+      <button type="submit" form="character-creator" id="export-character" class="bg-green-800 text-white p-2 rounded-lg">Eksportuj postać</button>
+      <button type="button" id="import-character" class="bg-yellow-800 text-white p-2 rounded-lg">Importuj postać</button>
+    </div>
+  </div>
+
+  <script defer src="../scripts/consts.js"></script>
+  <script defer src="../scripts/helpers.js"></script>
+  <script defer src="../scripts/inputs.js"></script>
+  <script defer src="../scripts/selects.js"></script>
+  <script defer src="../scripts/buttons.js"></script>
+  <script defer src="../scripts/index.js"></script>
+</body>
+</html>
