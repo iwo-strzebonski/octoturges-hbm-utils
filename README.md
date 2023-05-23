@@ -16,7 +16,3 @@ You can run it locally by cloning this repository and opening `index.html` in yo
 ## How do I contribute?
 
 You can contribute by opening an issue or a pull request.
-
-## How do I build it?
-
-You need to have Node.js installed and `inliner` module installed globally. Then run `inliner creator.html > index.html` to build the app.
