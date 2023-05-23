@@ -19,9 +19,9 @@
     if (!(window.location.href.endsWith("index.html") || window.location.href.endsWith("/index"))) {
       const links = document.querySelectorAll("a[id]");
 
-      const creatorLink = document.getElementById("creator");
-
-      creatorLink.href = creatorLink.href.replace(/^{{ current_url }}/, window.location.pathname);
+      links.forEach((link) => 
+        link.href = link.href.replace(encodeURIComponent('{{ current_url }}'), window.location.pathname)
+      );
     }
   </script>
 </body>
