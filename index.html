@@ -12,11 +12,10 @@
   <h1>Home</h1>
   <p>Strona główna narzędzi do systemu HbM: RPG v3</p>
 
-  <!-- <a href="{{ current_url }}/creator.html" id="creator">Kreator postaci</a> -->
-  <a href="./creator.html" id="creator">Kreator postaci</a>
+  <a href="{{ current_url }}/creator.html" id="creator">Kreator postaci</a>
   <a href="/">Powrót na stronę główną</a>
 
-  <!-- <script type="text/javascript" defer lang="javascript">
+  <script type="text/javascript" defer lang="javascript">
     if (!(window.location.href.endsWith("index.html") || window.location.href.endsWith("/index"))) {
       const links = document.querySelectorAll("a[id]");
 
@@ -24,6 +23,6 @@
         link.href = link.href.replace(encodeURIComponent('{{ current_url }}'), window.location.href)
       );
     }
-  </script> -->
+  </script>
 </body>
 </html>
