@@ -11,7 +11,7 @@ You can use it online at https://iwo-strzebonski.github.io/octoturges-npc-creato
 
 ## How do I run it locally?
 
-You can run it locally by cloning this repository and opening `index.html` in your browser.
+You can run it locally by cloning this repository and opening `index.html` in your browser. Perfectly run it on a local web server (e.g. VS Code's Live Server extension).
 
 ## How do I contribute?
 
