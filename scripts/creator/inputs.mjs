@@ -1,5 +1,4 @@
-import { COLORS } from './constants.mjs'
-import { getAllSkillsCost } from './helpers.mjs'
+import { getAllSkillsCost } from '../helpers.mjs'
 
 document.getElementById('race-exp').addEventListener('change', function () {
   const remainingExp = document.getElementById('remaining-exp')

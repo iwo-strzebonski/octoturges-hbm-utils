@@ -1,5 +1,5 @@
-import { GLOBALS } from './constants.mjs'
-import { importCharacter } from './helpers.mjs'
+import { GLOBALS } from '../constants.mjs'
+import { importCharacter } from '../helpers.mjs'
 
 document.getElementById('character-creator').addEventListener('submit', function (e) {
   try {

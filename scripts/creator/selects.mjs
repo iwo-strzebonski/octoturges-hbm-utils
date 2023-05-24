@@ -1,5 +1,5 @@
-import { COLORS } from './constants.mjs'
-import { getColor } from './helpers.mjs'
+import { COLORS } from '../constants.mjs'
+import { getColor } from '../helpers.mjs'
 
 document.querySelector("select[name='magic-type']").addEventListener('change', function () {
   const selected = this.value

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content='Iwo "Octoturge" Strzeboński'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rzut na Inicjatywę!</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/8db9837635.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-zinc-100 dark:bg-zinc-900 py-4 px-6">
+
+<h1 class="mb-4 text-3xl font-extrabold text-zinc-900 dark:text-white md:text-5xl lg:text-6xl">Rzut na <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Inicjatywę!</span></h1>
+<p class="text-lg font-normal text-zinc-500 lg:text-xl dark:text-zinc-400">Gwarancja losowości! Korzystamy z kryptograficznie generowanych liczb, więc nie ma narzekania na pseudolosowość!</p>
+
+<form id="roll-for-initiative" class="mt-4 md:mt-8 max-w-3xl p-6 bg-white border border-zinc-200 rounded-lg shadow dark:bg-zinc-800 dark:border-zinc-700 mx-auto">
+  <div id="dice-type-container" class="relative z-0 w-full mb-6 group">
+    <select name="dice-type" id="dice-type-input" aria-describedby="dice-type-explanation" class="block py-2.5 px-0 w-full text-sm text-zinc-900 bg-transparent border-0 border-b-2 border-zinc-300 appearance-none dark:text-white dark:border-zinc-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" required>
+      <option selected disabled value="">Wybierz kość...</option>
+      <option value="2">k2 (rzut monetą)</option>
+      <option value="4">k4</option>
+      <option value="6">k6</option>
+      <option value="8">k8</option>
+      <option value="12">k12</option>
+      <option value="20">k20</option>
+      <option value="100">k100</option>
+      <option value="custom">Własna...</option>
+    </select>
+
+    <label for="dice-type-input" class="block mt-2 text-sm font-medium text-zinc-900 dark:text-white">Wybierz jaką kością chcesz rzucić na inicjatywę.</label>
+
+    <p id="dice-type-explanation" class="text-sm text-zinc-500 dark:text-zinc-400">Jeśli nie ma jej na liście, wybierz opcję "Własna..." i wpisz liczbę ścianek w polu poniżej.</p>
+  </div>
+
+  <div id="custom-dice-container" class="hidden relative z-0 w-full mb-10 group">
+    <input type="number" name="custom-dice" id="custom-dice-input" aria-describedby="custom-dice-explanation" class="block py-2.5 px-0 w-full text-sm text-zinc-900 bg-transparent border-0 border-b-2 border-zinc-300 appearance-none dark:text-white dark:border-zinc-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " min="2" max="213" step="1" required>
+
+    <label for="custom-dice-input" class="peer-focus:font-medium absolute text-sm text-zinc-500 dark:text-zinc-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-600 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Własna kość</label>
+
+    <p id="custom-dice-explanation" class="mt-2 text-xs text-zinc-500 dark:text-zinc-400">Podaj ilość ścianek swojej kości.</p>
+  </div>
+
+  <div id="initiative-bonus-container" class="relative z-0 w-full mb-10 group">
+    <input type="number" name="initiative-bonus" id="initiative-bonus-input" aria-describedby="initiative-bonus-explanation" class="block py-2.5 px-0 w-full text-sm text-zinc-900 bg-transparent border-0 border-b-2 border-zinc-300 appearance-none dark:text-white dark:border-zinc-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " value="0" step="1" required>
+
+    <label for="initiative-bonus-input" class="peer-focus:font-medium absolute text-sm text-zinc-500 dark:text-zinc-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-600 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Twój bonus do inicjatywy</label>
+
+    <p id="initiative-bonus-explanation" class="mt-2 text-xs text-zinc-500 dark:text-zinc-400">Podaj swój bonus do inicjatywy.</p>
+  </div>
+
+  <div id="dice-amount-container" class="relative z-0 w-full mb-10 group">
+    <input type="number" name="dice-amount" id="dice-amount-input" aria-describedby="dice-amount-explanation" class="block py-2.5 px-0 w-full text-sm text-zinc-900 bg-transparent border-0 border-b-2 border-zinc-300 appearance-none dark:text-white dark:border-zinc-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " value="1" min="1" step="1" required>
+
+    <label for="dice-amount-input" class="peer-focus:font-medium absolute text-sm text-zinc-500 dark:text-zinc-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-600 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ilość kości</label>
+
+    <p id="dice-amount-explanation" class="mt-2 text-xs text-zinc-500 dark:text-zinc-400">Podaj ile kości chcesz rzucić.</p>
+  </div>
+
+  <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Rzut!</button>
+</form>
+
+<script defer type="module" src="./scripts/initiative/buttons.mjs"></script>
+<script defer type="module" src="./scripts/initiative/selects.mjs"></script>
+
+</body>
+</html>

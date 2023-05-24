@@ -1,8 +1,9 @@
 import uuid4 from 'https://cdn.jsdelivr.net/gh/tracker1/node-uuid4/browser.mjs'
 
-import { SKILLS, TALENTS, RACES, MAGIC_TYPES, GLOBALS } from './constants.mjs'
-import { importCharacter } from './helpers.mjs'
-import { TEST_CONNECTION, getCharacter } from './redis.mjs'
+import { SKILLS, TALENTS, RACES, MAGIC_TYPES, GLOBALS } from '../constants.mjs'
+import { importCharacter } from '../helpers.mjs'
+import { TEST_CONNECTION, getCharacter } from '../redis.mjs'
+import { getCharacterId } from '../query.mjs'
 
 const raceSelector = document.querySelector("select[name='race']")
 const magicSelector = document.querySelector("select[name='magic-type']")
@@ -91,11 +92,11 @@ for (const talent in TALENTS) {
   }
 }
 
-const query = new URLSearchParams(window.location.search)
+const id = getCharacterId()
 
-GLOBALS.CHARACTER_ID = query.get('character') || uuid4()
+GLOBALS.CHARACTER_ID = id || uuid4()
 
-if (query.get('character')) {
+if (id) {
   try {
     await TEST_CONNECTION()
 
