@@ -80,7 +80,7 @@ document.getElementById('roll-for-initiative').addEventListener('submit', functi
   })
 
   const container = document.createElement('div')
-  container.className = 'flex flex-col justify-center items-center flex-wrap w-full h-max gap-2 overflow-hidden py-12'
+  container.className = 'flex flex-col justify-center items-center flex-wrap w-full h-max gap-8 overflow-hidden pt-12'
 
   const resultsContainer = document.createElement('div')
   resultsContainer.className = 'inline-flex gap-4 flex-wrap justify-center items-center mb-4'
