@@ -1,4 +1,4 @@
-# octoturges-npc-creator
+# octoturges-hbm-utils
 Octoturge's Character Sheet Creator for HbM: RPG v3
 
 ## What is this?
